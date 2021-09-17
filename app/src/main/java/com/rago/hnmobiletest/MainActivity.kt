@@ -25,4 +25,10 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
+    override fun onSupportNavigateUp(): Boolean {
+        this.supportActionBar?.hide()
+        onBackPressed()
+        return true
+    }
 }

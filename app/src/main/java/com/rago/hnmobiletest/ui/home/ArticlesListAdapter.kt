@@ -3,6 +3,8 @@ package com.rago.hnmobiletest.ui.home
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.ViewParent
+import androidx.fragment.app.findFragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -18,7 +20,8 @@ class ArticlesListAdapter :
         fun bind(data: String) {
             binding.tvStoryTitle.text = data
             binding.cvArticle.setOnClickListener {
-                println("Article")
+                val action = HomeFragmentDirections.actionHomeFragmentToArticlesDetailsFragment(data)
+                binding.root.findNavController().navigate(action)
             }
         }
 

@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.rago.hnmobiletest.R
 import com.rago.hnmobiletest.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -41,6 +43,17 @@ class HomeFragment : Fragment() {
             false
         )
 
+
+        val swipeHandler = object : SwipeToDeleteCallback(requireContext()) {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                homeViewModel.delete(viewHolder.adapterPosition)
+            }
+        }
+
+        val itemTouchHelper = ItemTouchHelper(swipeHandler)
+
+        itemTouchHelper.attachToRecyclerView(articlesRV)
+
         binding.swipeRefreshArticles.setOnRefreshListener {
             homeViewModel.refresh()
             binding.swipeRefreshArticles.isRefreshing = false
@@ -50,4 +63,25 @@ class HomeFragment : Fragment() {
             articlesListAdapter.submitList(it)
         })
     }
+
+    /*val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
+        0,
+        ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+    ) {
+
+
+        override fun onMove(
+            recyclerView: RecyclerView,
+            viewHolder: RecyclerView.ViewHolder,
+            target: RecyclerView.ViewHolder
+        ): Boolean {
+            return false
+        }
+
+        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+            println("onSwiped: placesList ${homeViewModel.listArticles.value!!.size}")
+            println("position ${viewHolder.adapterPosition}")
+        }
+
+    }*/
 }

@@ -9,5 +9,18 @@
         android:id="@+id/homeFragment"
         android:name="com.rago.hnmobiletest.ui.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_articlesDetailsFragment"
+            app:destination="@id/articlesDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/articlesDetailsFragment"
+        android:name="com.rago.hnmobiletest.ui.articlesdetails.ArticlesDetailsFragment"
+        android:label="fragment_articles_details"
+        tools:layout="@layout/fragment_articles_details" >
+        <argument
+            android:name="url"
+            app:argType="string" />
+    </fragment>
 </navigation>
