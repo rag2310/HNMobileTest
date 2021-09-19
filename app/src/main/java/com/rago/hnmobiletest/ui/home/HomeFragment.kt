@@ -33,6 +33,8 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        //Inicializamos el recyclerView con su adaptador
         val articlesRV = binding.rvArticles
         articlesRV.adapter = articlesListAdapter
         articlesRV.layoutManager = LinearLayoutManager(
@@ -42,6 +44,7 @@ class HomeFragment : Fragment() {
         )
 
 
+        //Callback para el manejo del swipe delete
         val swipeHandler = object : SwipeToDeleteCallback(requireContext()) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 homeViewModel.delete(viewHolder.adapterPosition)
@@ -52,15 +55,19 @@ class HomeFragment : Fragment() {
 
         itemTouchHelper.attachToRecyclerView(articlesRV)
 
+        //si se refresca la lista SwipeRefreshLayout se llama a la funcion refresh()
         binding.swipeRefreshArticles.setOnRefreshListener {
             homeViewModel.refresh()
             binding.swipeRefreshArticles.isRefreshing = false
         }
 
+        //Observador de la lista de articulos para ser actualizada en el adaptador
+        //del recyclerView
         homeViewModel.listHit.observe(viewLifecycleOwner, {
             articlesListAdapter.submitList(it)
         })
 
+        //observador para mostrar el circular progressa indefinido.
         homeViewModel.loading.observe(viewLifecycleOwner, {
             if (!it) {
                 binding.cpiLoadingArticles.visibility = View.GONE

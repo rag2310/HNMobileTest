@@ -1,8 +1,8 @@
-package com.rago.hnmobiletest.data.network
+package com.rago.hnmobiletest.data.model
 
 import com.google.gson.annotations.SerializedName
-import com.rago.hnmobiletest.data.model.Hit
 
+// Data class para el manejo del json de repuesta por parte del API
 data class CustomResponse(
 
     @SerializedName("hits")

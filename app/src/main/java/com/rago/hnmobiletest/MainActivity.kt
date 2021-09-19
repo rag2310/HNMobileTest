@@ -10,6 +10,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        /*Ocultamos la barra en la pantalla principal*/
         this.supportActionBar?.hide()
     }
 }

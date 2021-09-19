@@ -17,6 +17,8 @@ class ArticlesListAdapter :
 
     class ArticlesViewHolder(private val binding: RowArticlesBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+        // Se inician los datos ligados al layout row_articles
         fun bind(data: Hit) {
             binding.hit = data
 

@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.rago.hnmobiletest.R
 
+
+//Callback para el Swipe que se encarga de borrar el articulo de la lista
 abstract class SwipeToDeleteCallback(private val context: Context) : ItemTouchHelper.SimpleCallback(
     0,
     ItemTouchHelper.LEFT

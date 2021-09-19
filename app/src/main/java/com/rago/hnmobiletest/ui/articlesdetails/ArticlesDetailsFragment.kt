@@ -37,6 +37,7 @@ class ArticlesDetailsFragment : Fragment() {
             it.findNavController().popBackStack()
         }
 
+        //Configuramos el webView
         binding.wvArticles.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
                 view?.loadUrl(url!!)
@@ -61,10 +62,10 @@ class ArticlesDetailsFragment : Fragment() {
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle("HNMobileTest")
         builder.setMessage("Did something bad happen?")
-        builder.setPositiveButton("YES") { dialog, which ->
+        builder.setPositiveButton("YES") { _, _ ->
             handler?.proceed()
         }
-        builder.setNegativeButton("No") { dialog, which ->
+        builder.setNegativeButton("No") { _, _ ->
             handler?.cancel()
         }
         val dialog: AlertDialog = builder.create()
