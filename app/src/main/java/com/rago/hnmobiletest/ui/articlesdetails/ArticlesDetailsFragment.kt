@@ -3,7 +3,6 @@ package com.rago.hnmobiletest.ui.articlesdetails
 import android.annotation.SuppressLint
 import android.net.http.SslError
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,10 +10,9 @@ import android.webkit.SslErrorHandler
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
-import com.rago.hnmobiletest.MainActivity
-import com.rago.hnmobiletest.R
 import com.rago.hnmobiletest.databinding.FragmentArticlesDetailsBinding
 
 class ArticlesDetailsFragment : Fragment() {
@@ -27,7 +25,6 @@ class ArticlesDetailsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-//        println("articlesDetailsFragmentArgs.url ${articlesDetailsFragmentArgs.url}")
         binding = FragmentArticlesDetailsBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         return binding.root
@@ -39,7 +36,6 @@ class ArticlesDetailsFragment : Fragment() {
         binding.ivBackButton.setOnClickListener {
             it.findNavController().popBackStack()
         }
-//        binding.wvArticles.settings.javaScriptEnabled = true
 
         binding.wvArticles.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
@@ -56,7 +52,7 @@ class ArticlesDetailsFragment : Fragment() {
             }
         }
 
-        binding.wvArticles.loadUrl("https://www.reuters.com/world/europe/google-apple-remove-navalny-app-stores-russian-elections-begin-2021-09-17/")
+        binding.wvArticles.loadUrl(articlesDetailsFragmentArgs.url)
 
     }
 

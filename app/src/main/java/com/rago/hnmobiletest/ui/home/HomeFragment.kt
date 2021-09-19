@@ -1,18 +1,16 @@
 package com.rago.hnmobiletest.ui.home
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.rago.hnmobiletest.R
 import com.rago.hnmobiletest.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.HiltAndroidApp
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -59,29 +57,18 @@ class HomeFragment : Fragment() {
             binding.swipeRefreshArticles.isRefreshing = false
         }
 
-        homeViewModel.listArticles.observe(viewLifecycleOwner, {
+        homeViewModel.listHit.observe(viewLifecycleOwner, {
             articlesListAdapter.submitList(it)
         })
+
+        homeViewModel.loading.observe(viewLifecycleOwner, {
+            if (!it) {
+                binding.cpiLoadingArticles.visibility = View.GONE
+                binding.swipeRefreshArticles.visibility = View.VISIBLE
+            } else {
+                binding.cpiLoadingArticles.visibility = View.VISIBLE
+                binding.swipeRefreshArticles.visibility = View.GONE
+            }
+        })
     }
-
-    /*val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
-        0,
-        ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
-    ) {
-
-
-        override fun onMove(
-            recyclerView: RecyclerView,
-            viewHolder: RecyclerView.ViewHolder,
-            target: RecyclerView.ViewHolder
-        ): Boolean {
-            return false
-        }
-
-        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-            println("onSwiped: placesList ${homeViewModel.listArticles.value!!.size}")
-            println("position ${viewHolder.adapterPosition}")
-        }
-
-    }*/
 }

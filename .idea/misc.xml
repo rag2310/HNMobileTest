@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/rodolfo/AndroidStudioProjects/HNMobileTest/app/src/main/res/layout/fragment_home.xml" value="0.209375" />
+        <entry key="..\:/Users/rodolfo/AndroidStudioProjects/HNMobileTest/app/src/main/res/layout/row_articles.xml" value="0.648171500630517" />
         <entry key="..\:/Users/rodolfo_pc/proyects/HNMobileTest/app/src/main/res/drawable/ic_delete_white_24.xml" value="0.3880208333333333" />
         <entry key="..\:/Users/rodolfo_pc/proyects/HNMobileTest/app/src/main/res/layout/activity_main.xml" value="0.36770833333333336" />
         <entry key="..\:/Users/rodolfo_pc/proyects/HNMobileTest/app/src/main/res/layout/fragment_articles_details.xml" value="0.1" />
@@ -11,7 +13,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
